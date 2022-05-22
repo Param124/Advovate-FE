@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -12,7 +13,7 @@ loginData={
   username:'',
   password:''
 }
-  constructor(private snack:MatSnackBar,private login:LoginService) { }
+  constructor(private snack:MatSnackBar,private login:LoginService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -44,13 +45,15 @@ loginData={
           (user:any)=>{
             this.login.setUser(user);
             console.log(user);
-            if(this.login.getUserRole()=="ADMIN")
+            if(this.login.getUserRole()=="Admin")
             {
-window.location.href="/admin"
+              this.router.navigate(['admin'])
+            // window.location.href="/admin"
             }
             else if(this.login.getUserRole()=="Normal")
             {
-              window.location.href="/user-dashboard"
+              this.router.navigate(['user-dashboard/0'])
+              // window.location.href="/user-dashboard"
             }
             else
             {

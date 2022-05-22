@@ -4,12 +4,31 @@
     </a>
     <span>Quiq Portal</span>
     <span class="example-spacer"></span>
-    <a [routerLink]="'/login'" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <a 
+    *ngIf="!login.isLoggedIn()"
+    [routerLink]="'/login'" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <!-- <mat-icon>login</mat-icon> -->
       Login
     </a>
-    <a [routerLink]="'/signup'" mat-icon-button class="example-icon mr20 ml20" aria-label="Example icon-button with share icon">
+    <a 
+    *ngIf="!login.isLoggedIn()"
+    [routerLink]="'/signup'" mat-icon-button class="example-icon mr20 ml20" aria-label="Example icon-button with share icon">
       <!-- <mat-icon>share</mat-icon> -->
       Register
+    </a>
+
+    <a 
+    *ngIf="login.isLoggedIn()"
+    (click)="logout()"
+     mat-icon-button class="example-icon mr20 ml20" aria-label="Example icon-button with share icon">
+      <!-- <mat-icon>share</mat-icon> -->
+      Logout
+    </a>
+    <a 
+    *ngIf="login.isLoggedIn()"
+    routerLink="/admin/profile"
+     mat-icon-button class="example-icon mr20 ml20" aria-label="Example icon-button with share icon">
+      <!-- <mat-icon>share</mat-icon> -->
+      {{login.getUSer().username}}
     </a>
   </mat-toolbar>

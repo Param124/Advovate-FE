@@ -1,0 +1,76 @@
+<!-- {{questions|json}} -->
+<div class="bootstrap-wrapper" *ngIf="!isSubmit">
+    <div class="container-fluid">
+    
+    <div class="row">
+    <div class="col-md-2">
+    <!-- <h3> instruction </h3> -->
+    </div>
+    <div class="col-md-8">
+
+    <ng-container *ngIf="questions">
+
+        <h1>On Going quiz {{questions[0].quiz.title}}</h1>
+    </ng-container>
+    
+    <mat-card *ngFor="let q of questions; let i=index" class="mt20">
+    <mat-card-content>
+        <p><b>Q -{{i+1}} : {{q.content}}</b></p>
+        <mat-divider> </mat-divider>
+        <br>
+        <div class="row mt20">
+            <div class="col-md-6"> 
+                <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option1" name="i"/> {{q.option1}}
+                </div>
+                <div class="col-md-6"> <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option2" name="i"/> {{q.option2}} </div>
+        </div>
+        <div class="row mt20">
+            <div class="col-md-6">
+                <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option3" name="i"/> {{q.option3}}
+                 </div>
+                <div class="col-md-6">
+                <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option4" name="i"/> {{q.option4}}
+                 </div>
+        </div>
+    
+            
+        
+    
+    </mat-card-content>
+    
+    </mat-card>
+    <br>
+    <div class="conatiner text-center">
+    <button (click)="submitQuiz()" mat-raised-button color="accent"> Submit Quiz </button>
+    </div>
+    </div>
+    
+    <div class="col-md-2">
+    
+    </div> 
+    </div>
+    </div>
+    </div>
+    
+
+
+<!-- Show the result -->
+
+<div class="bootstrap-wrapper text-center" *ngIf="isSubmit">
+    <div class="row">
+        <div class="col-md-3 offset-md-3 text-center">
+            <br>
+            <mat-card class="text-center">
+                <mat-card-header>
+                    <mat-card-title>Quiz Result: </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <h2>Marks Got : {{marksGot}}</h2>
+                    <h2>Correct Answer : {{correctAnswer}}</h2>
+                    <h2>Question Attempted : {{attempted}}</h2>
+                </mat-card-content>
+                <button mat-raised-button color="accent" [routerLink]="'/user-dashboard/0'">Back to quiz</button>
+            </mat-card>
+        </div>
+    </div>
+</div>
