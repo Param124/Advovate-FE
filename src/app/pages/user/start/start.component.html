@@ -20,16 +20,16 @@
         <br>
         <div class="row mt20">
             <div class="col-md-6"> 
-                <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option1" name="i"/> {{q.option1}}
+                <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option1" [name]="q.no"/> {{q.option1}}
                 </div>
-                <div class="col-md-6"> <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option2" name="i"/> {{q.option2}} </div>
+                <div class="col-md-6"> <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option2" name="q.no"/> {{q.option2}} </div>
         </div>
         <div class="row mt20">
             <div class="col-md-6">
-                <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option3" name="i"/> {{q.option3}}
+                <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option3" [name]="q.no"/> {{q.option3}}
                  </div>
                 <div class="col-md-6">
-                <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option4" name="i"/> {{q.option4}}
+                <input [(ngModel)]="q.givenAnswer" type="radio" [value]="q.option4" [name]="q.no"/> {{q.option4}}
                  </div>
         </div>
     

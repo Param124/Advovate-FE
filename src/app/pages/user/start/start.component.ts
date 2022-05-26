@@ -17,6 +17,7 @@ export class StartComponent implements OnInit {
   correctAnswer=0;
   attempted=0;
   isSubmit=false;
+  no:number=1;
   constructor(private loc : LocationStrategy,private _route:ActivatedRoute,private _question:QuestionService) { }
 
   ngOnInit(): void {
@@ -31,6 +32,9 @@ export class StartComponent implements OnInit {
   this.questions=data;
   this.questions.forEach((element:any) => {
     element['givenAnswer']='';
+  });
+  this.questions.forEach((element:any) => {
+    element['no']=this.no++;
   });
     },
     (error)=>{
